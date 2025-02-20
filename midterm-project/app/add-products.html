@@ -15,7 +15,7 @@
             <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="index.html">Home</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="add-products.html">List</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="list.html">List</a>
             </div>
         </div>
         <!-- Page content wrapper-->
@@ -47,33 +47,43 @@
                 </div>
             </nav>
             <!-- Page content-->
+            <!-- Fields: Photo, Title, Description (limited to 100 caracters), Price, Quantity -->
             <div id="content" class="container-fluid p-5">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear
-                    non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>
-                    Make sure to keep all page content within the
-                    <code>#page-content-wrapper</code>
-                    . The top navbar is optional, and just for demonstration. Just create an element with the
-                    <code>#sidebarToggle</code>
-                    ID which will toggle the menu when clicked.
-                </p>
-                <div class="alert alert-primary" role="alert">
-                    Here's an example of how to assemble your products. Pay close attention to all the details,
-                    especially the dependencies, as they are crucial for the proper setup. Although this is not
-                    described in the documentation, it would show attention to detail if you remove this example from
-                    the homepage after use. You can simply comment it out. Don’t forget to do the same for the
-                    JavaScript code to avoid any errors due to missing dependencies.
+                <h1 class="mt-4">Add a new product</h1>
+
+                <form id="productform">
+                <!--product title-->
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Product Title" aria-label="Product Title" aria-describedby="basic-addon2" required>
                 </div>
 
-                <div class="alert alert-warning" role="alert">
-                    Create your own layout, don't just copy this example, use your creativity.
+                <!--product description-->
+                <div class="mb-3">
+                    <label for="formDesc" class="form-label">Enter description</label>
+                    <textarea class="form-control" id="formDesc" aria-label="With textarea" maxlength="100" placeholder="max 100 characters" required></textarea>
                 </div>
 
-                <h2>Product list example</h2>
-                <div id="products" class="d-flex gap-2">
-                    <!-- Products -->
+                <!--upload image-->
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Choose Product Image</label>
+                    <input class="form-control" type="file" id="formFIle" accept="image/*" required>
+                  </div>
+
+                <!-- Price & Quantity Fields (Side by Side on Larger Screens) -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="price" class="form-label">Price ($)</label>
+                        <input type="number" class="form-control" placeholder="Enter price" min="0" step="0.01" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" placeholder="Enter quantity" min="1" required>
+                    </div>
                 </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100">Add Product</button>
+                </form>
             </div>
         </div>
     </div>

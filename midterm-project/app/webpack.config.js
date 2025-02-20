@@ -7,8 +7,8 @@ module.exports = {
   entry: {
     global: path.resolve(__dirname, "global.js"),
     index: path.resolve(__dirname, "index.js"),
-    listProducts: './app/list-products.js'
-    // addProducts: "./add-products.js",
+    listProducts: "./list-products.js",
+    addProducts: "./add-products.js",
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader",'style-loader','sass-loader', {
+        use: [MiniCssExtractPlugin.loader, "css-loader", {
           loader: "sass-loader",
           options: {
             sassOptions: {
@@ -36,7 +36,7 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|webp)$/,
+        test: /\.(png|jpg|gif)$/,
         type: "asset/resource", // Para copiar arquivos de imagem
         generator: {
           filename: 'assets/images/[name][hash][ext][query]', // Colocando as imagens dentro de assets/images/
@@ -60,16 +60,16 @@ module.exports = {
       chunks: ["global", "index"],
       filename: "index.html",
     }),
-    // new HtmlWebpackPlugin({
-    //   template: "./list-products.html",
-    //   chunks: ["listProducts", "global"],
-    //   filename: "list-products.html",
-    // }),
-    // new HtmlWebpackPlugin({
-    //   template: "./add-products.html",
-    //   chunks: ["addProducts", "global"],
-    //   filename: "add-products.html",
-    // }),
+    new HtmlWebpackPlugin({
+      template: "./list-products.html",
+      chunks: ["listProducts", "global"],
+      filename: "list-products.html",
+    }),
+    new HtmlWebpackPlugin({
+      template: "./add-products.html",
+      chunks: ["addProducts", "global"],
+      filename: "add-products.html",
+    }),
   ],
   optimization: {
     minimize: true,
