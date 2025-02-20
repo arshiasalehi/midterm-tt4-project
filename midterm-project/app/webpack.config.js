@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     global: path.resolve(__dirname, "global.js"),
     index: path.resolve(__dirname, "index.js"),
-    // listProducts: "./list-products.js",
+    listProducts: './app/list-products.js'
     // addProducts: "./add-products.js",
   },
   output: {
@@ -20,7 +20,7 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", {
+        use: [MiniCssExtractPlugin.loader, "css-loader",'style-loader','sass-loader', {
           loader: "sass-loader",
           options: {
             sassOptions: {
@@ -36,7 +36,7 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif|svg|webp)$/,
         type: "asset/resource", // Para copiar arquivos de imagem
         generator: {
           filename: 'assets/images/[name][hash][ext][query]', // Colocando as imagens dentro de assets/images/
